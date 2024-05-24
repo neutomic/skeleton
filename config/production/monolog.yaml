@@ -1,0 +1,13 @@
+monolog:
+    default: app
+
+    channels:
+        app:
+            handlers:
+                - monolog.handler.stderr
+
+    handlers:
+        stderr:
+            type: stderr
+            level: warning
+            formatter: monolog.formatter.line

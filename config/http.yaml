@@ -1,0 +1,19 @@
+http:
+    logger: monolog.logger.http
+
+    server:
+        sockets:
+            -
+                host: 127.0.0.1
+                port: 8080
+                bind:
+                    reuse-port: true
+
+    runtime:
+        middleware:
+            x-powered-by: ~
+            session: ~
+            router: ~
+            static-content:
+                roots:
+                    '/': '%project%/public'

@@ -1,0 +1,4 @@
+http:
+    runtime:
+        middleware:
+            compression: ~

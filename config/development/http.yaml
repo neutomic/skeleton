@@ -1,0 +1,15 @@
+http:
+    server:
+        command:
+            cluster:
+                watch:
+                    interval: 1
+
+                    directories:
+                        - '%project%/templates'
+
+                    extensions: ['php', 'yaml', 'twig']
+
+    runtime:
+        middleware:
+            access-log: ~
