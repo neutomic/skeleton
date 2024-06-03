@@ -1,6 +1,6 @@
-http:
-    server:
-        command:
+framework:
+    command:
+        http:
             cluster:
                 watch:
                     interval: 1
@@ -10,6 +10,5 @@ http:
 
                     extensions: ['php', 'yaml', 'twig']
 
-    runtime:
-        middleware:
-            access-log: ~
+    middleware:
+        compression: false

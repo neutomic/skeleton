@@ -1,9 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <div class="container">
-        <img src="images/logo.svg" alt="logo" class="logo" />
+{% block title %}Welcome to Your New Neutomic App{% endblock %}
 
-        <h1>{{ visits }}</h1>
-    </div>
+{% block body %}
+    <header>
+        <img src="/images/logo.svg" alt="Neutomic Logo" id="logo">
+        <h1>Welcome to Neutomic</h1>
+    </header>
+
+    <main>
+        <p>Congratulations! You've successfully installed Neutomic 🚀</p>
+
+        <p>Ready to get started? Check out the <a href="https://neutomic.github.io/">documentation</a> to learn more! ⚛️</p>
+
+        <small>You have been here {{ counter }} times.</small>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Saif Eddin Gmati</p>
+    </footer>
 {% endblock %}

@@ -42,12 +42,13 @@ final readonly class IndexHandler implements HandlerInterface
      */
     public function handle(Context $context, RequestInterface $request): ResponseInterface
     {
-        $visits = $request->getSession()->update('visits', static function(?int $count): int {
+        $session = $request->getSession();
+        $counter = $session->update('counter', static function(?int $count): int {
             return (null !== $count) ? ($count + 1) : 1;
         });
 
         $content = $this->twig->render('index.html.twig', [
-            'visits' => $visits,
+            'counter' => $counter,
         ]);
 
         return Response\html($content);

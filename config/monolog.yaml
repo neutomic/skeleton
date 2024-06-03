@@ -1,6 +1,4 @@
 monolog:
-    default: app
-
     channels:
         app:
             handlers:

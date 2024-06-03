@@ -8,12 +8,3 @@ http:
                 port: 8080
                 bind:
                     reuse-port: true
-
-    runtime:
-        middleware:
-            x-powered-by: ~
-            session: ~
-            router: ~
-            static-content:
-                roots:
-                    '/': '%project%/public'

@@ -4,7 +4,7 @@
     "type": "project",
     "require": {
         "php": "^8.3",
-        "neutomic/neutomic": "dev-main#d3a488d29e54bb3a732b337de82d24244aa17a6d",
+        "neutomic/neutomic": "dev-main#f9bf1a7",
         "twig/twig": "^4.0"
     },
     "license": "MIT",
@@ -13,5 +13,6 @@
             "App\\": "src/"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

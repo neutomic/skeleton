@@ -16,7 +16,7 @@ use Neu\Component\Http\Runtime\Middleware\MiddlewareInterface;
 final readonly class ExampleMiddleware implements MiddlewareInterface
 {
     /**
-     * Process the incoming request.
+     * @inheritDoc
      */
     public function process(Context $context, RequestInterface $request, HandlerInterface $next): ResponseInterface
     {

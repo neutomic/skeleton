@@ -6,33 +6,38 @@ namespace App;
 
 use Neu;
 use Neu\Component\DependencyInjection\ContainerBuilder;
-use Neu\Component\DependencyInjection\ContainerBuilderInterface;
 use Neu\Component\DependencyInjection\Project;
-
-use function Neu\Framework\entrypoint;
+use Psl\Env;
+use Psl\SecureRandom;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+(static function(): void {
+    // Load the project secret from the environment.
+    $secret = Env\get_var('PROJECT_SECRET');
+    if (null === $secret) {
+        // Generate a random secret if it's not set.
+        $secret = SecureRandom\string(32);
 
-entrypoint(static function(Project $project): ContainerBuilderInterface {
-    $builder = ContainerBuilder::create($project);
+        // Set the secret as an environment variable.
+        Env\set_var('PROJECT_SECRET', $secret);
+    }
 
-    $builder->addExtensions([
+    // Create a new project instance.
+    $project = Project::create($secret, __DIR__ . '/../', __FILE__);
+
+    // Create the container.
+    $container = ContainerBuilder::create($project, [], [
         new Neu\Component\Configuration\DependencyInjection\ConfigurationExtension(),
         new Neu\Bridge\Monolog\DependencyInjection\MonologExtension(),
-        new Neu\Component\Advisory\DependencyInjection\AdvisoryExtension(),
-        new Neu\Component\Console\DependencyInjection\ConsoleExtension(),
-        new Neu\Component\EventDispatcher\DependencyInjection\EventDispatcherExtension(),
-        new Neu\Component\Cache\DependencyInjection\CacheExtension(),
-        new Neu\Component\Http\Message\DependencyInjection\MessageExtension(),
-        new Neu\Component\Http\Recovery\DependencyInjection\RecoveryExtension(),
-        new Neu\Component\Http\Router\DependencyInjection\RouterExtension(),
-        new Neu\Component\Http\Runtime\DependencyInjection\RuntimeExtension(),
-        new Neu\Component\Http\Server\DependencyInjection\ServerExtension(),
-        new Neu\Component\Http\Session\DependencyInjection\SessionExtension(),
+        new Neu\Framework\DependencyInjection\FrameworkExtension(),
         new Neu\Bridge\Twig\DependencyInjection\TwigExtension(),
-    ]);
+    ])->build();
 
-    return $builder;
-});
+    // Retrieve the engine from the container.
+    $engine = $container->getTyped(Neu\Framework\EngineInterface::class, Neu\Framework\EngineInterface::class);
+
+    // Run the engine.
+    $engine->run();
+})();
 

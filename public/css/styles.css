@@ -1,28 +1,33 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Fira Code','JetBrains Mono',Inconsolata,Monaco,monospace;
+    text-align: center;
     margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 0;;
     height: 100vh;
-    color: #333;
+    color: #33333;
     font-size: 16px;
 }
 
-.container {
-    background-color: #fff;
-    border-radius: 25px;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 1);
-    text-align: center;
-    padding: 0 1rem 1rem 0;
+header {
+    background-color: #f0f0f0; /* Light gray background */
+    padding: 20px;
 }
 
-img {
-    margin: -2rem 0 0 -2rem;
+#logo {
+    max-width: 200px; /* Adjust as needed */
+    margin-bottom: 20px;
 }
 
-h1 {
-    color: #e63946;
+main {
+    padding: 20px;
+    margin: 0 auto;
+}
+
+footer {
+    background-color: #333333;
+    color: white;
+    padding: 2rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
