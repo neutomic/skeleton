@@ -13,10 +13,106 @@
 
         <p>Ready to get started? Check out the <a href="https://neutomic.github.io/">documentation</a> to learn more! ⚛️</p>
 
-        <small>You have been here {{ counter }} times.</small>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2" scope="col">Counters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Session Counter</th>
+                    <td>{{ counter }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Server Counter</th>
+                    <td>{{ serverCounter }}</td>
+                </tr>
+            </tbody>
+            <caption>
+                <p>The session counter is incremented each time you refresh the page, while the server counter is incremented each time the server receives a request.</p>
+                {% if context.workerId %}
+                    <p>The server counter is per worker, so it will be different for each worker.</p>
+                {% endif %}
+            </caption>
+        </table>
+
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2" scope="col">Project Settings</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Name</th>
+                    <td>{{ project.name }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Mode</th>
+                    <td>{{ project.mode.value }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Debug</th>
+                    <td><code>{{ project.debug ? 'true' : 'false' }}</code></td>
+                </tr>
+                <tr>
+                    <th scope="row">Directory</th>
+                    <td><code>{{ project.directory }}</code></td>
+                </tr>
+                <tr>
+                    <th scope="row">Source</th>
+                    <td><code>{{ project.source is null ? 'null' : project.source }}</code></td>
+                </tr>
+                <tr>
+                    <th scope="row">Config</th>
+                    <td><code>{{ project.config is null ? 'null' : project.config }}</code></td>
+                </tr>
+                <tr>
+                    <th scope="row">Entrypoint</th>
+                    <td><code>{{ project.entrypoint }}</code></td>
+                </tr>
+                <tr>
+                    <th scope="row">Secret</th>
+                    <td><code>{{ project.secret|slice(0, 5) }}{% for i in 0..22 %}{{ '*' }}{% endfor %}{{ project.secret|slice(-5) }}</code></td>
+                </tr>
+            </tbody>
+            <caption>
+                <p>The project is constructed in your <code>{{ project.entrypoint }}</code> file.</p>
+            </caption>
+        </table>
+
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2" scope="col">Context</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Client ID</th>
+                    <td>{{ context.client.id }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Client Remote Address</th>
+                    <td>{{ context.client.remoteAddress }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Client Local Address</th>
+                    <td>{{ context.client.localAddress }}</td>
+                </tr>
+            </tbody>
+            <caption>
+                {% if context.workerId is null %}
+                <p>The project was started using <code>http:server:start</code> command, which runs the project in a single thread.</p>
+                {% else %}
+                    <p>The project was started using <code>http:server:cluster</code> command, which runs the project in a cluster of workers, this worker has the ID <code>{{ context.workerId }}</code>.</p>
+                {% endif %}
+            </caption>
+        </table>
     </main>
 
     <footer>
-        <p>&copy; 2024 Saif Eddin Gmati</p>
+        <p>&copy; {{ date().format('Y') }} Neutomic</p>
     </footer>
 {% endblock %}

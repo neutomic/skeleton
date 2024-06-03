@@ -4,30 +4,74 @@ body {
     margin: 0;
     padding: 0;;
     height: 100vh;
-    color: #33333;
+    color: #333333;
     font-size: 16px;
 }
 
 header {
-    background-color: #f0f0f0; /* Light gray background */
+    background-color: #f0f0f0;
     padding: 20px;
 }
 
 #logo {
-    max-width: 200px; /* Adjust as needed */
+    max-width: 200px;
     margin-bottom: 20px;
+    border-radius: 8px;
 }
 
 main {
     padding: 20px;
     margin: 0 auto;
+    width: 40%;
 }
 
 footer {
     background-color: #333333;
     color: white;
     padding: 2rem;
-    position: fixed;
-    bottom: 0;
+}
+
+table {
+    border: 1px solid #333333;
+    padding: 10px;
+    margin: 2rem auto;
+    text-align: left;
     width: 100%;
+    border-radius: 18px;
+}
+
+th[scope="col"] {
+    background-color: #333333;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+th[scope="row"] {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-decoration-color: #e63946;
+    padding: 10px;
+}
+
+td {
+    padding: 10px;
+    text-wrap: wrap;
+    word-wrap: break-word;
+}
+
+table > caption {
+    caption-side: bottom;
+    text-align: left;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: #e63946;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+code {
+    background-color: #f0f0f0;
+    padding: 1px;
+    border-radius: 5px;
 }
