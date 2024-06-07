@@ -6,9 +6,12 @@ framework:
                     interval: 1
 
                     directories:
-                        - '%project%/templates'
+                        - '%project.directory%/templates'
 
                     extensions: ['php', 'yaml', 'twig']
 
     middleware:
         compression: false
+        access-log:
+            logger: monolog.logger.http
+

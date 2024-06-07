@@ -2,4 +2,4 @@ framework:
     middleware:
         static-content:
             roots:
-                '/': '%project%/public'
+                '/': '%project.directory%/public'

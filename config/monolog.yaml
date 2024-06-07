@@ -19,7 +19,7 @@ monolog:
     handlers:
         file:
             type: file
-            file: "%project%/var/log/%mode%.log"
+            file: "%project.directory%/var/log/%project.mode%.log"
             level: debug
             formatter: monolog.formatter.line
 
