@@ -3,8 +3,8 @@
     "description": "A minimal Neutomic project recommended to create simple web applications",
     "type": "project",
     "require": {
-        "php": "^8.3",
-        "neutomic/neutomic": "dev-main#39feb54",
+        "php": "^8.4",
+        "neutomic/neutomic": "dev-main",
         "twig/twig": "^4.0"
     },
     "license": "MIT",
